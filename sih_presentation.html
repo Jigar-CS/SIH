@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Fonts for Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monastery360 - SIH Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffe44d;
+            color: #181818;
+            overflow-x: hidden;
+        }
+        
+        /* Neo-brutalism geometric accents */
+        .nb-accent {
+            position: absolute;
+            z-index: 1;
+        }
+        .nb-star {
+            width: 40px; height: 40px;
+            background: #ff6b6b;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            border: 4px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        .nb-dot {
+            width: 18px; height: 18px;
+            background: #6df7c1;
+            border-radius: 50%;
+            border: 4px solid #181818;
+            box-shadow: 2px 2px 0 #181818;
+        }
+        .nb-rect {
+            width: 60px; height: 20px;
+            background: #a0e7e5;
+            border: 4px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Subtle section background for contrast */
+        .slide {
+            background: #fffbe6;
+            border-radius: 18px;
+            box-shadow: 8px 8px 0 #181818;
+            border: 4px solid #181818;
+            margin-bottom: 48px;
+        }
+        }
+        
+        .slide {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            box-shadow: 0 4px 32px 0 rgba(34, 51, 71, 0.10);
+            border: 1px solid rgba(200, 200, 200, 0.08);
+            backdrop-filter: blur(8px);
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: #181818;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0 #ffe44d, 4px 4px 0 #181818;
+        }
+        
+        h2 {
+            font-size: 2.1rem;
+            margin-bottom: 30px;
+            color: #181818;
+            font-weight: 800;
+            text-shadow: 2px 2px 0 #fffbe6, 4px 4px 0 #181818;
+        }
+        
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #181818;
+            font-weight: 700;
+            background: #a0e7e5;
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 8px;
+            border: 2.5px solid #181818;
+            box-shadow: 2px 2px 0 #181818;
+        }
+        
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .problem-highlight {
+            background: #ffb3b3;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 8px solid #181818;
+            border-top: 4px solid #181818;
+            border-bottom: 4px solid #181818;
+            border-right: 4px solid #181818;
+            margin: 20px 0;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .solution-highlight {
+            background: #a0e7e5;
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 8px solid #181818;
+            border-top: 4px solid #181818;
+            border-bottom: 4px solid #181818;
+            border-right: 4px solid #181818;
+            margin: 20px 0;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .tech-card {
+            background: #fff;
+            padding: 18px;
+            border-radius: 10px;
+            border: 3px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+            transition: box-shadow 0.2s ease;
+        }
+        
+        .tech-card:hover {
+            box-shadow: 8px 8px 0 #181818;
+        }
+        
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            text-align: center;
+            margin: 10px;
+            padding: 16px;
+            background: #fff;
+            border-radius: 10px;
+            min-width: 120px;
+            border: 3px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 0 #ffe44d, 4px 4px 0 #181818;
+        }
+        
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            background: #fffbe6;
+            padding: 16px;
+            border-radius: 10px;
+            margin: 10px;
+            flex: 1;
+            min-width: 180px;
+            border: 3px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .demo-section {
+            background: #b4f8c8;
+            padding: 28px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 3px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .cta-button {
+            background: #fff;
+            color: #181818;
+            padding: 12px 32px;
+            border: 3px solid #181818;
+            border-radius: 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 16px;
+            font-weight: 800;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        .cta-button:hover {
+            background: #ffe44d;
+            color: #181818;
+            box-shadow: 8px 8px 0 #181818;
+        }
+        
+        .team-section {
+            background: #fffbe6;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #181818;
+            box-shadow: 4px 4px 0 #181818;
+        }
+        
+        ul {
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        li {
+            margin: 10px 0;
+            padding-left: 24px;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: #181818;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Neo-brutalism geometric accents -->
+        <div class="nb-accent nb-star" style="top: 24px; left: 24px;"></div>
+        <div class="nb-accent nb-dot" style="top: 80px; right: 40px;"></div>
+        <div class="nb-accent nb-rect" style="bottom: 40px; left: 60px;"></div>
+        
+        <!-- Title Slide -->
+        <div class="slide">
+            <h1>🏯 Monastery360</h1>
+            <p style="font-size: 1.8rem; margin: 20px 0;">Digital Heritage Platform for Sikkim's Monasteries</p>
+            <div class="solution-highlight">
+                <p style="font-size: 1.4rem;"><strong>Preserving 200+ Monasteries Through Cutting-Edge Technology</strong></p>
+                <p>Smart India Hackathon 2025 • Team Digital Dharma</p>
+            </div>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="slide">
+            <h2>🔍 The Challenge</h2>
+            <div class="problem-highlight">
+                <h3>Sikkim's Hidden Treasures Are Disappearing</h3>
+                <ul>
+                    <li><strong>200+ monasteries</strong> dating back to 17th-18th centuries</li>
+                    <li><strong>Priceless manuscripts</strong> and murals at risk</li>
+                    <li><strong>Limited tourist access</strong> due to remote locations</li>
+                    <li><strong>No unified digital platform</strong> for cultural preservation</li>
+                    <li><strong>Language barriers</strong> limiting global reach</li>
+                </ul>
+            </div>
+            <p style="font-size: 1.5rem; color: #ff6b6b;"><strong>We're losing irreplaceable cultural heritage every day!</strong></p>
+        </div>
+
+        <!-- Solution Overview -->
+        <div class="slide">
+            <h2>💡 Our Solution: Monastery360</h2>
+            <div class="solution-highlight">
+                <h3>4 Revolutionary Pillars</h3>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3>🌐 Virtual Tours</h3>
+                        <p>360° immersive monastery experiences with multi-language narration</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>📱 Smart App</h3>
+                        <p>AI-powered audio guides with offline functionality</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>📚 Digital Archive</h3>
+                        <p>AI-digitized manuscripts with intelligent search</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🗓️ Cultural Calendar</h3>
+                        <p>Festival booking and spiritual event management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="slide">
+            <h2>⚡ Cutting-Edge Technology</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🤖 AI/ML Stack</h3>
+                    <ul style="font-size: 1rem;">
+                        <li>TensorFlow for image recognition</li>
+                        <li>GPT integration for content</li>
+                        <li>Computer vision for murals</li>
+                        <li>Predictive analytics</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>📱 Mobile & Web</h3>
+                    <ul style="font-size: 1rem;">
+                        <li>React Native cross-platform</li>
+                        <li>React.js with Next.js</li>
+                        <li>Progressive Web App</li>
+                        <li>AR/VR integration</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>☁️ Cloud Infrastructure</h3>
+                    <ul style="font-size: 1rem;">
+                        <li>AWS/Kubernetes</li>
+                        <li>PostgreSQL + MongoDB</li>
+                        <li>Elasticsearch</li>
+                        <li>Global CDN</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>🔧 Smart Features</h3>
+                    <ul style="font-size: 1rem;">
+                        <li>Bluetooth beacons</li>
+                        <li>Offline functionality</li>
+                        <li>Multi-language support</li>
+                        <li>Real-time translation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features Demo -->
+        <div class="slide">
+            <h2>🚀 Revolutionary Features</h2>
+            <div class="demo-section">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3>🎯 Smart Audio Guides</h3>
+                        <p>Bluetooth beacons trigger contextual information as you walk through monasteries</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🔍 Visual Search</h3>
+                        <p>Take a photo of any mural or artifact - AI instantly provides historical context</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🗣️ Voice in Local Languages</h3>
+                        <p>Ask questions in Hindi, Nepali, Bhutia, or Lepcha - get instant responses</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🎨 AR Restoration</h3>
+                        <p>See damaged murals restored to original glory through augmented reality</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact & Results -->
+        <div class="slide">
+            <h2>📈 Expected Impact</h2>
+            <div class="impact-stats">
+                <div class="stat-box">
+                    <div class="stat-number">200+</div>
+                    <p>Monasteries Digitized</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50K+</div>
+                    <p>Monthly Users</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">25%</div>
+                    <p>Tourism Increase</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10K+</div>
+                    <p>Artifacts Preserved</p>
+                </div>
+            </div>
+            <div class="solution-highlight">
+                <h3>🌍 Global Cultural Preservation</h3>
+                <ul>
+                    <li>Researchers worldwide can access rare manuscripts</li>
+                    <li>Students learn about Buddhist culture interactively</li>
+                    <li>Tourism revenue supports monastery maintenance</li>
+                    <li>Local communities become digital heritage guardians</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Implementation Timeline -->
+        <div class="slide">
+            <h2>⏱️ 18-Month Roadmap</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 style="color: #ff6b6b;">Phase 1: Foundation</h3>
+                    <p><strong>Months 1-6</strong></p>
+                    <ul style="font-size: 1rem;">
+                        <li>Core platform development</li>
+                        <li>10 major monasteries</li>
+                        <li>Mobile app MVP</li>
+                        <li>Basic virtual tours</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3 style="color: #ffd93d;">Phase 2: Intelligence</h3>
+                    <p><strong>Months 7-12</strong></p>
+                    <ul style="font-size: 1rem;">
+                        <li>AI-powered features</li>
+                        <li>Smart recommendations</li>
+                        <li>Booking system</li>
+                        <li>50+ monasteries</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3 style="color: #4ecdc4;">Phase 3: Scale</h3>
+                    <p><strong>Months 13-18</strong></p>
+                    <ul style="font-size: 1rem;">
+                        <li>AR/VR experiences</li>
+                        <li>All 200+ monasteries</li>
+                        <li>Global expansion</li>
+                        <li>Advanced analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Model -->
+        <div class="slide">
+            <h2>💰 Sustainable Business Model</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🎟️ Tourism Revenue</h3>
+                    <p>Premium tours, event bookings, and guided experiences</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🏫 Educational Licensing</h3>
+                    <p>Schools and universities access for cultural studies</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🔬 Research Partnerships</h3>
+                    <p>Academic institutions and cultural organizations</p>
+                </div>
+                <div class="tech-card">
+                    <h3>🛒 Cultural Merchandise</h3>
+                    <p>AR-enabled souvenirs and digital collectibles</p>
+                </div>
+            </div>
+           
+        </div>
+
+        <!-- Technical Innovation -->
+        <div class="slide">
+            <h2>🏆 Why We'll Win SIH</h2>
+            <div class="solution-highlight">
+                <h3>Unique Technical Innovations</h3>
+                <ul>
+                    <li><strong>Offline-First Architecture:</strong> Works in remote Himalayan areas without internet</li>
+                    <li><strong>Cultural AI:</strong> Specially trained models for Buddhist art and Sanskrit texts</li>
+                    <li><strong>Beacon-Based Navigation:</strong> Indoor positioning accurate to 1 meter</li>
+                    <li><strong>Predictive Preservation:</strong> AI monitors monastery condition over time</li>
+                    <li><strong>Sacred Space Respect:</strong> Special protocols for photographing and digitizing religious areas</li>
+                </ul>
+            </div>
+            <div class="problem-highlight">
+                <h3>Real Government Impact</h3>
+                <ul>
+                    <li>Direct alignment with <strong>Digital India</strong> mission</li>
+                    <li>Supports <strong>Ministry of Culture</strong> preservation goals</li>
+                    <li>Boosts <strong>Tourism Ministry</strong> revenue targets</li>
+                    <li>Enables <strong>Education Ministry</strong> digital learning</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Team -->
+        <div class="slide">
+            <h2>👥 Team AstroNova</h2>
+            <div class="team-section">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <h3>🎯 Full-Stack Developers (2)</h3>
+                        <p>React, Node.js, cloud architecture experts</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🤖 AI/ML Specialist</h3>
+                        <p>Computer vision, NLP, recommendation systems</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>📱 Mobile Developer</h3>
+                        <p>React Native, AR/VR, offline-first apps</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🎨 UI/UX Designer</h3>
+                        <p>Cultural sensitivity, accessibility, user research</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>☁️ DevOps Engineer</h3>
+                        <p>Kubernetes, CI/CD, infrastructure automation</p>
+                    </div>
+                    <div class="tech-card">
+                        <h3>🏛️ Cultural Advisor</h3>
+                        <p>Buddhism expert, Sikkimese culture, monastery protocols</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="slide">
+            <h1>🚀 Ready to Transform Cultural Heritage?</h1>
+            <div class="solution-highlight">
+                <h2>Monastery360: Where Ancient Wisdom Meets Modern Technology</h2>
+                <div class="impact-stats">
+                    <div class="stat-box">
+                        <div class="stat-number">36</div>
+                        <p>Hours of Innovation</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">∞</div>
+                        <p>Cultural Impact</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">1</div>
+                        <p>Winning Solution</p>
+                    </div>
+                </div>
+                <p style="font-size: 1.6rem; margin: 30px 0;">
+                    <strong>"Preserving the past, inspiring the future, one monastery at a time"</strong>
+                </p>
+                <a href="#demo" class="cta-button">🎬 Watch Live Demo</a>
+                <a href="#github" class="cta-button">💻 View Code</a>
+            </div>
+            <p style="font-size: 1.2rem; margin-top: 30px;">
+                Thank you, Judges! Questions?
+            </p>
+        </div>
+
+    </div>
+    
+    <script>
+        // Add smooth scrolling and interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            // Add fade-in animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+            
+            // Add click animations to cards
+            const cards = document.querySelectorAll('.tech-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
